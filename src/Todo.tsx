@@ -1,27 +1,19 @@
 import React from "react";
 
-class Todo extends React.Component<any> {
-	shouldComponentUpdate(prevProps: any) {
-	if(this.props != prevProps) {
-		return true;
-	}
-		return false;
-	}
+interface TodoProps {
+    todo: {id: string; title: string;}
+}
 
-	handleOnClick() {
-		window.location.href = '/detail'
-	}
-
-	render() {
+const Todo: React.VFC<TodoProps> = ({todo}) => {
+    const { title } = todo;
 
 	return (
 		<div>
-			<div onClick={this.handleOnClick}>
-			{this.props.todo.title}
-			</div>
+			<a href={'/detail'}>
+			    {title}
+			</a>
 		</div>
 	);
-	}
 }
 
 export default Todo;
